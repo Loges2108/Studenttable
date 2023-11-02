@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import { Drawer, IconButton, TextField, Box,Button, Grid } from "@mui/material";
+import { Drawer, IconButton, TextField, Box,Button, Tooltip, Typography, Divider} from "@mui/material";
 import { Cancel as CancelIcon } from "@mui/icons-material";
 import axios from "axios";
-interface ICourse {
-  _id:string
-    title:string,
-    description:string,
-    fees:number
-  
-}
+import { Icourse } from "./Interface";
+
 
 type CourseDetailsDrawerProps =  {
   open: boolean;
   onClose: () => void;
-  details: ICourse
+  details: Icourse
   onSuccess: () => void;
   isEditable:boolean; 
    
@@ -25,19 +20,19 @@ const CourseDrawer: React.FC<CourseDetailsDrawerProps> = ({ open, onClose, detai
 
     const handleTextFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
-      setEditedCourse((prevDetails: ICourse) => ({ ...prevDetails, [name]: value }));
+      setEditedCourse((prevDetails: Icourse) => ({ ...prevDetails, [name]: value }));
     };
     const onSaveChanges = async () => {
       try {
         if (editedCourse._id) {
          
-          await axios.put<ICourse>(`http://localhost:3200/updatecourse/${editedCourse._id}`, editedCourse).then(()=>{
+          await axios.put<Icourse>(`http://localhost:3200/updatecourse/${editedCourse._id}`, editedCourse).then(()=>{
               onSuccess();
               
           });
         } else {
           
-          await axios.post<ICourse[]>("http://localhost:3200/createcourse", editedCourse).then(()=>{
+          await axios.post<Icourse[]>("http://localhost:3200/createcourse", editedCourse).then(()=>{
               onSuccess();
               
           });
@@ -60,15 +55,18 @@ const CourseDrawer: React.FC<CourseDetailsDrawerProps> = ({ open, onClose, detai
      {details&& (
             <Box padding={3} alignItems={"center"} justifyItems={"center"}>
               <Box>
+              <Tooltip title="Cancel">
                 <IconButton onClick={onClose} style={{ float: "right" }}>
                   <CancelIcon />
                 </IconButton>
-                <h2>Course Details</h2>
+                </Tooltip>
+                <Typography variant="h4" > {editedCourse._id != "" ? "Course Details" : "Add Details"}</Typography>
+                <Divider />
               <Box>
               <form onSubmit={(e)=>{e.preventDefault();onSaveChanges()}}>
                 <TextField fullWidth
                 size="medium"
-                  sx={{ gap: 2, padding: 1 }}
+                  sx={{ gap: 2, padding: 2 }}
                   label="Title"
                   name="title"
                   value={editedCourse.title}
@@ -78,7 +76,7 @@ const CourseDrawer: React.FC<CourseDetailsDrawerProps> = ({ open, onClose, detai
 
                 <TextField fullWidth
                 size="medium"
-                  sx={{ gap: 2, padding: 1 }}
+                  sx={{ gap: 2, padding: 2 }}
                   label="Description"
                   name="description"
                   value={editedCourse.description}
@@ -88,33 +86,29 @@ const CourseDrawer: React.FC<CourseDetailsDrawerProps> = ({ open, onClose, detai
 
                 <TextField fullWidth
                 size="medium"
-                  sx={{ gap: 2, padding: 1 }}
+                  sx={{ gap: 2, padding: 2 }}
                   label="Fees"
                   name="fees"
                   value={editedCourse.fees}
                   onChange={handleTextFieldChange}
               autoFocus={!isEditable}
                 />
+
                 { isEditable&&
-            <Box sx={{padding:1}}>
-         <Grid container
-  direction="row"
-  justifyContent="end"
-  alignItems="flex-start"
->
-        <Grid item rowSpacing={5} >
+            <Box  position={"absolute"} bottom={0} right={0} padding={5}>
+      
           
-          <Button sx={{padding:1}}
+          <Button sx={{margin:"10px"}}
           variant="contained" color="primary"
-          onClick={onSaveChanges}>Save</Button>
-        </Grid>
+          onClick={onSaveChanges}
+          >Save</Button>
         
-        <Grid item rowSpacing={5} >
-        <Button sx={{padding:1}}
+        
+        
+        <Button 
           variant="contained" color="primary"
           onClick={onClose}>Cancel</Button>
-        </Grid>
-      </Grid>
+        
             </Box>
 }
                 </form>
