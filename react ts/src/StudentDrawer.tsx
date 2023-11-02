@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Drawer, IconButton, TextField, Box, Button, Checkbox, Typography ,FormControlLabel, Divider, Tooltip, Grid} from "@mui/material";
+import { Drawer, IconButton, TextField, Box, Button, Checkbox, Typography ,FormControlLabel, Divider, Tooltip} from "@mui/material";
 import { Cancel as CancelIcon, } from "@mui/icons-material";
 import axios from "axios";
 import { IStudent, Icourse } from "./Interface";
@@ -158,23 +158,18 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
 
 
             { isEditable&&
-            <Box sx={{Padding:1,gap:2}}>
-              <Grid container
-  direction="row"
-  justifyContent="end"
-  alignItems="flex-start"
->
-<Grid item rowSpacing={5} >
-            <Button sx={{padding:1}} variant="contained" color="primary" onClick={onSaveChanges}>
+            <Box  sx={{Padding:1,gap:2, position:"absolute",bottom:0,right:0}}>
+    
+            <Button sx={{padding:5}} variant="contained" color="primary" onClick={onSaveChanges}>
               Save
             </Button>
-            </Grid>
-            <Grid item rowSpacing={5} >
-            <Button  sx={{padding:1}} variant="contained" color="primary" onClick={onClose}>
+          
+           
+            <Button  sx={{padding:5}} variant="contained" color="primary" onClick={onClose}>
               Cancel
             </Button>
-            </Grid>
-            </Grid>
+            
+           
             </Box>
 }
             </form>
