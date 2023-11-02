@@ -1,0 +1,7 @@
+<Button
+            variant="contained"
+            color="secondary"
+            onClick={handleAddStudentClick}
+          >
+            Add student
+          </Button>
