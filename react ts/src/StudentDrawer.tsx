@@ -87,11 +87,10 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
             </Tooltip>
             <Typography variant="h4">
             {editedStudent._id != "" ? "Student Details" : "Add Details"}</Typography>
-            <Box>
             <Divider />
+            <Box paddingY={3}>
+            
           <form onSubmit={(e)=>{e.preventDefault();onSaveChanges()}}>
-
- 
             <TextField fullWidth
               size="medium"
               sx={{ gap: 2, padding: 2 }}
@@ -158,14 +157,14 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
 
 
             { isEditable&&
-            <Box  sx={{Padding:1,gap:2, position:"absolute",bottom:0,right:0}}>
+            <Box display={"flex"}  justifyItems={"end"} bottom={0} right={0} padding={2}>
     
-            <Button sx={{padding:5}} variant="contained" color="primary" onClick={onSaveChanges}>
+            <Button sx={{marginX:"10px"}} variant="contained" color="primary" onClick={onSaveChanges}>
               Save
             </Button>
           
            
-            <Button  sx={{padding:5}} variant="contained" color="primary" onClick={onClose}>
+            <Button  variant="contained" color="primary" onClick={onClose}>
               Cancel
             </Button>
             

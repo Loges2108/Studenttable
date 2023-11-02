@@ -218,10 +218,10 @@ function Student() {
         <DialogTitle>Delete Student</DialogTitle>
         <DialogContent>
           {studentToDelete && (
-            <div>
-              <p>Name: {studentToDelete.name}</p>
-              <p>Email: {studentToDelete.email}</p>
-            </div>
+            <Box>
+              <Typography variant="body1">Name: {studentToDelete.name}</Typography>
+              <Typography variant="body1">Email: {studentToDelete.email}</Typography>
+            </Box>
           )}
         </DialogContent>
         <DialogActions>

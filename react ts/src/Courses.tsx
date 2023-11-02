@@ -33,7 +33,7 @@ const initialCourseValues:Icourse = {
 
 
 function Course() {
-  const [courses, setCourses] = useState<Icourse[]>([]);
+  const [courses, setCourses] = useState<Icourse[]>();
   const [selectedCourse, setSelectedCourse] =
     useState<Icourse>(initialCourseValues);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -121,7 +121,7 @@ function Course() {
                 <TableCell align="center">title</TableCell>
                 <TableCell align="center">description</TableCell>
                 <TableCell align="center">fees</TableCell>
-                <TableCell align="center">view/edit/delete</TableCell>
+                <TableCell align="center">Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
