@@ -75,6 +75,7 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
       sx: {
         width: "350px",
         height: "100%",
+        overflowX:"hidden"
       },
     }}>
       {StudentData && (
@@ -91,6 +92,7 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
             <Box paddingY={3}>
             
           <form onSubmit={(e)=>{e.preventDefault();onSaveChanges()}}>
+            <Box>
             <TextField fullWidth
               size="medium"
               sx={{ gap: 2, padding: 2 }}
@@ -99,6 +101,12 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
               value={editedStudent.name}
               onChange={handleTextFieldChange}
               autoFocus={!isEditable}
+              InputLabelProps={{
+                sx: { textAlign: "center" },
+              }}
+              InputProps={{
+                sx: { textAlign: "center" },
+              }}
             />
 
             <TextField fullWidth
@@ -109,6 +117,12 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
               value={editedStudent.age}
               onChange={handleTextFieldChange}
               autoFocus={!isEditable}
+              InputLabelProps={{
+                sx: { textAlign: "center" },
+              }}
+              InputProps={{
+                sx: { textAlign: "center" },
+              }}
             />
 
             <TextField fullWidth
@@ -119,6 +133,12 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
               value={editedStudent.email}
               onChange={handleTextFieldChange}
               autoFocus={!isEditable}
+              InputLabelProps={{
+                sx: { textAlign: "center" },
+              }}
+              InputProps={{
+                sx: { textAlign: "center" },
+              }}
             />
             <TextField fullWidth
               size="medium"
@@ -128,6 +148,12 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
               value={editedStudent.gender}
               onChange={handleTextFieldChange}
               autoFocus={!isEditable}
+              InputLabelProps={{
+                sx: { textAlign: "center" },
+              }}
+              InputProps={{
+                sx: { textAlign: "center" },
+              }}
             />
             <TextField fullWidth
               size="medium"
@@ -137,12 +163,22 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
               value={editedStudent.phoneNumber}
               onChange={handleTextFieldChange}
               autoFocus={!isEditable}
+              InputLabelProps={{
+                sx: { textAlign: "center" },
+              }}
+              InputProps={{
+                sx: { textAlign: "center" },
+              }}
             />
+            </Box>
+            <Box>
              <Typography variant="h6">Courses</Typography>
-            
+             </Box>
+
              {courses &&
   courses.map((courseData: Icourse) => (
-    <div key={courseData._id}>
+    <Box key={courseData._id}>
+
       <FormControlLabel
         control={
           <Checkbox
@@ -152,14 +188,17 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
         }
         label={courseData.title}
       />
-    </div>
+    </Box>
   ))}
 
 
             { isEditable&&
-            <Box display={"flex"}  justifyItems={"end"} bottom={0} right={0} padding={2}>
+            <Box display={"flex"}
+            justifyContent={"flex-end"}
+            gap={1}
+            marginTop={2}>
     
-            <Button sx={{marginX:"10px"}} variant="contained" color="primary" onClick={onSaveChanges}>
+            <Button variant="contained" color="primary" onClick={onSaveChanges}>
               Save
             </Button>
           

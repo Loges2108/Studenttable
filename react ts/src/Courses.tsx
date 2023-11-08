@@ -71,16 +71,20 @@ function Course() {
     setIsDrawerOpen(true);
     setIsEditable(true);
   };
-  const handleDeleteCourse = async (courseID:Icourse) => {
+  const handleDeleteCourse = async (CourseID:Icourse) => {
     try {
       await axios.delete<Icourse[]>(
-        `http://localhost:3200/deletecoursebyid/${courseID}`
+        `http://localhost:3200/deletecoursebyid/${CourseID}`
       );
       getAllCourse();
+      console.log(handleDeleteCourse);
+      
     } catch (error) {
       console.error("Error deleting student:", error);
     }
   };
+
+
   const openDeleteDialog = (course:Icourse) => {
     setCourseDelete(course);
     setIsDeleteDialogOpen(true);

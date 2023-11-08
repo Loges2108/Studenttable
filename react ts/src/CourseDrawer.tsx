@@ -50,6 +50,7 @@ const CourseDrawer: React.FC<CourseDetailsDrawerProps> = ({ open, onClose, detai
       sx: {
         width: "350px",
         height: "100%",
+        overflowX:"hidden"
       },
     }}>
      {details&& (
@@ -62,8 +63,9 @@ const CourseDrawer: React.FC<CourseDetailsDrawerProps> = ({ open, onClose, detai
                 </Tooltip>
                 <Typography variant="h4" > {editedCourse._id != "" ? "Course Details" : "Add Details"}</Typography>
                 <Divider />
-              <Box>
+              <Box paddingY={3}>
               <form onSubmit={(e)=>{e.preventDefault();onSaveChanges()}}>
+                <Box>
                 <TextField fullWidth
                 size="medium"
                   sx={{ gap: 2, padding: 2 }}
@@ -93,12 +95,16 @@ const CourseDrawer: React.FC<CourseDetailsDrawerProps> = ({ open, onClose, detai
                   onChange={handleTextFieldChange}
               autoFocus={!isEditable}
                 />
+                </Box>
 
                 { isEditable&&
-            <Box  position={"absolute"} bottom={0} right={0} padding={5}>
+           <Box display={"flex"}
+           justifyContent={"flex-end"}
+           gap={1}
+           marginTop={2}>
       
           
-          <Button sx={{margin:"10px"}}
+          <Button 
           variant="contained" color="primary"
           onClick={onSaveChanges}
           >Save</Button>
