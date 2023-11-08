@@ -74,7 +74,7 @@ function Course() {
   const handleDeleteCourse = async (CourseID:Icourse) => {
     try {
       await axios.delete<Icourse[]>(
-        `http://localhost:3200/deletecoursebyid/${CourseID}`
+        `http://localhost:3200/deletecoursebyid/${CourseID._id}`
       );
       getAllCourse();
       console.log(handleDeleteCourse);
