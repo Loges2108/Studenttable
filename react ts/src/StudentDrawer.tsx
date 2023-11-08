@@ -92,10 +92,11 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
             <Box paddingY={3}>
             
           <form onSubmit={(e)=>{e.preventDefault();onSaveChanges()}}>
-            <Box>
+            <Box mb={2}>
+              <Box paddingY={1}>
             <TextField fullWidth
               size="medium"
-              sx={{ gap: 2, padding: 2 }}
+              sx={{ gap: 2}}
               label="Name"
               name="name"
               value={editedStudent.name}
@@ -108,10 +109,11 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
                 sx: { textAlign: "center" },
               }}
             />
-
+            </Box>
+            <Box paddingY={1}>
             <TextField fullWidth
               size="medium"
-              sx={{ gap: 2, padding: 2 }}
+              sx={{ gap: 2}}
               label="Age"
               name="age"
               value={editedStudent.age}
@@ -124,10 +126,11 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
                 sx: { textAlign: "center" },
               }}
             />
-
+            </Box>
+            <Box paddingY={1}>
             <TextField fullWidth
               size="medium"
-              sx={{ gap: 2, padding: 2 }}
+              sx={{ gap: 2 }}
               label="Email"
               name="email"
               value={editedStudent.email}
@@ -140,9 +143,11 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
                 sx: { textAlign: "center" },
               }}
             />
+            </Box>
+            <Box paddingY={1}>
             <TextField fullWidth
               size="medium"
-              sx={{ gap: 2, padding: 2 }}
+              sx={{ gap: 2 }}
               label="Gender"
               name="gender"
               value={editedStudent.gender}
@@ -155,9 +160,11 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
                 sx: { textAlign: "center" },
               }}
             />
+            </Box>
+            <Box paddingY={1}>
             <TextField fullWidth
               size="medium"
-              sx={{ gap: 2, padding: 2 }}
+              sx={{ gap: 2 }}
               label="PhoneNumber"
               name="phoneNumber"
               value={editedStudent.phoneNumber}
@@ -171,6 +178,7 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
               }}
             />
             </Box>
+            </Box>
             <Box>
              <Typography variant="h6">Courses</Typography>
              </Box>
@@ -181,7 +189,7 @@ const StudentDrawer: React.FC<StudentDrawerProps> = ({
 
       <FormControlLabel
         control={
-          <Checkbox
+          <Checkbox sx={{paddingLeft:3}}
             checked={selectedCourses.includes(courseData._id)}
             onChange={() => handleCourseCheckboxChange(courseData._id)}
           />

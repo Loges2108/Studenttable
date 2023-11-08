@@ -65,36 +65,40 @@ const CourseDrawer: React.FC<CourseDetailsDrawerProps> = ({ open, onClose, detai
                 <Divider />
               <Box paddingY={3}>
               <form onSubmit={(e)=>{e.preventDefault();onSaveChanges()}}>
-                <Box>
+                <Box mb={2}>
+                <Box paddingY={1}> 
                 <TextField fullWidth
                 size="medium"
-                  sx={{ gap: 2, padding: 2 }}
+                  sx={{ gap:2}}
                   label="Title"
                   name="title"
                   value={editedCourse.title}
                   onChange={handleTextFieldChange}
               autoFocus={!isEditable}
                 />
-
+                </Box>
+                <Box paddingY={1}>
                 <TextField fullWidth
                 size="medium"
-                  sx={{ gap: 2, padding: 2 }}
+                  sx={{ gap: 2}}
                   label="Description"
                   name="description"
                   value={editedCourse.description}
                   onChange={handleTextFieldChange}
               autoFocus={!isEditable}
                 />
-
+                </Box>
+                <Box paddingY={1}>
                 <TextField fullWidth
                 size="medium"
-                  sx={{ gap: 2, padding: 2 }}
+                  sx={{ gap: 2 }}
                   label="Fees"
                   name="fees"
                   value={editedCourse.fees}
                   onChange={handleTextFieldChange}
               autoFocus={!isEditable}
                 />
+                </Box>
                 </Box>
 
                 { isEditable&&

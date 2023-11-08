@@ -96,6 +96,7 @@ function Course() {
 
   return (
     <>
+    <Container>
       <Grid
         container
         direction="row"
@@ -117,8 +118,8 @@ function Course() {
           </Button>
         </Grid>
       </Grid>
-      <Container>
-        <TableContainer component={Paper}>
+      <Container sx={{overflow:"hidden"}}>
+        <TableContainer component={Paper} >
           <Table>
             <TableHead>
               <TableRow>
@@ -212,6 +213,7 @@ function Course() {
         </Box>
       </Dialog>
       </Box>
+      </Container>
     </>
   );
 }
